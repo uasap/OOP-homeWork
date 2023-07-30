@@ -5,11 +5,19 @@ public class Person {
     //Вместо возраста создать поля даты рождения и смерти и высчитывать возраст в методе. 
     private int yearBirth;
     private int yearDie;
+    
+    static enum Gender{ 
+        MALE,
+        FEMALE        
+    }
 
-    public Person(String fullName, int yearBirth, int yearDie) {
+    private Gender gender;
+
+    public Person(String fullName, int yearBirth, int yearDie,  Gender gender) {
         this.fullName = fullName;       
         this.yearBirth = yearBirth;
         this.yearDie = yearDie;
+        this.gender = gender;
     }
 
     public String getFullName() {

@@ -6,17 +6,17 @@
 
 public class Main {
     public static void main(String[] args) {
-        Person irina = new Person(  "Ирина",  1967, -1);
-        Person igor = new Person(   "Игорь",  1960, -1);
-        Person vasya = new Person(  "Вася",   1991, -1);
-        Person masha = new Person(  "Маша",   1989 , -1);
-        Person jane = new Person(   "Женя",   2013, -1);
-        Person ivan = new Person(   "Ваня",   2011, -1);
-        Person Sasha = new Person(  "Саша",   2010, -1);
-        Person Sasha10 = new Person("Коля",   2012, -1);
-        Person Sasha11 = new Person("Дима",   2015, -1);
-        Person Sasha12 = new Person("Андрей", 2016, -1);
-        Person Sasha3 = new Person( "Костя",  2020, -1);
+        Person irina = new Person(  "Ирина",  1967, -1, Person.Gender.FEMALE);
+        Person igor = new Person(   "Игорь",  1960, -1,Person.Gender.MALE);
+        Person vasya = new Person(  "Вася",   1991, -1,Person.Gender.MALE);
+        Person masha = new Person(  "Маша",   1989 , -1,Person.Gender.FEMALE);
+        Person jane = new Person(   "Женя",   2013, -1,Person.Gender.MALE);
+        Person ivan = new Person(   "Ваня",   2011, -1,Person.Gender.MALE);
+        Person Sasha = new Person(  "Саша",   2010, -1,Person.Gender.MALE);
+        Person Sasha10 = new Person("Коля",   2012, -1,Person.Gender.MALE);
+        Person Sasha11 = new Person("Дима",   2015, -1,Person.Gender.MALE);
+        Person Sasha12 = new Person("Андрей", 2016, -1,Person.Gender.MALE);
+        Person Sasha3 = new Person( "Костя",  2020, -1,Person.Gender.MALE);
         GeoTree gt = new GeoTree();
         gt.appendPerentChild(irina, vasya); // Ирина родитель Васи
         gt.appendPerentChild(irina, masha); // Ирина родитель Маши
