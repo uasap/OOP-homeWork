@@ -1,11 +1,15 @@
 
 public class Person {
-    public String fullName;
-    public int age;
+    private String fullName;
+    ///private int age;
+    //Вместо возраста создать поля даты рождения и смерти и высчитывать возраст в методе. 
+    private int yearBirth;
+    private int yearDie;
 
-    public Person(String fullName, int age) {
-        this.fullName = fullName;
-        this.age = age;
+    public Person(String fullName, int yearBirth, int yearDie) {
+        this.fullName = fullName;       
+        this.yearBirth = yearBirth;
+        this.yearDie = yearDie;
     }
 
     public String getFullName() {
@@ -16,12 +20,15 @@ public class Person {
         this.fullName = fullName;
     }
 
-    public int getAge() {
-        return age;
+    private int GetCurYear(){
+        return 2023;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public int getAge() {        
+        int lastYear = (this.yearDie < 0 ) ? GetCurYear() : this.yearDie;
+        int t_age = lastYear - yearBirth;
+        return t_age;
     }
+
 
 } 

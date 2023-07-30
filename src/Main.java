@@ -6,17 +6,17 @@
 
 public class Main {
     public static void main(String[] args) {
-        Person irina = new Person("Ирина", 56);
-        Person igor = new Person("Игорь", 60);
-        Person vasya = new Person("Вася", 30);
-        Person masha = new Person("Маша", 27);
-        Person jane = new Person("Женя", 10);
-        Person ivan = new Person("Ваня", 8);
-        Person Sasha = new Person("Саша", 9);
-        Person Sasha10 = new Person("Саша", 10);
-        Person Sasha11 = new Person("Саша", 11);
-        Person Sasha12 = new Person("Саша", 12);
-        Person Sasha3 = new Person("Саша", 3);
+        Person irina = new Person(  "Ирина",  1967, -1);
+        Person igor = new Person(   "Игорь",  1960, -1);
+        Person vasya = new Person(  "Вася",   1991, -1);
+        Person masha = new Person(  "Маша",   1989 , -1);
+        Person jane = new Person(   "Женя",   2013, -1);
+        Person ivan = new Person(   "Ваня",   2011, -1);
+        Person Sasha = new Person(  "Саша",   2010, -1);
+        Person Sasha10 = new Person("Коля",   2012, -1);
+        Person Sasha11 = new Person("Дима",   2015, -1);
+        Person Sasha12 = new Person("Андрей", 2016, -1);
+        Person Sasha3 = new Person( "Костя",  2020, -1);
         GeoTree gt = new GeoTree();
         gt.appendPerentChild(irina, vasya); // Ирина родитель Васи
         gt.appendPerentChild(irina, masha); // Ирина родитель Маши
@@ -30,6 +30,7 @@ public class Main {
         gt.appendPerentChild(igor, Sasha11); // Игорь родитель Саши
         gt.appendPerentChild(igor, Sasha3); // Игорь родитель Саши        
 
+        
         // Ищем детей Ирины
         System.out.println("Дети Ирины");
         System.out.println(new Research(gt).spend(irina, Relationship.parent));
@@ -43,5 +44,6 @@ public class Main {
 
         // Ищем людей определенного возраста
         System.out.println(new Research(gt).searchAge());
+        
     }
 }

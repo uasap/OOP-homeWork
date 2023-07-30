@@ -11,10 +11,20 @@ public class Research {
     }
 
     // метод поиска связи: родитель - ребенок, жена-муж
-    public ArrayList<String> spend(Person p, Relationship re) {
+    public ArrayList<String> spend(Person inPerson, Relationship re) {
         for (Node t : tree) {
-            if (t.p1.fullName == p.fullName && t.re == re) {
-                result.add(t.p2.fullName);
+            Person curPers1 = t.GetPerson1();
+            Person curPers2 = t.GetPerson2();
+           
+            String curName1 = curPers1.getFullName();
+            String curName2 = curPers2.getFullName();
+
+            String inName = inPerson.getFullName();
+
+            Relationship curRelat = t.GetRelationship();
+            
+            if (curName1 == inName && curRelat == re) {
+                result.add(curName2);
             }
         }
         return result;
@@ -28,9 +38,11 @@ public class Research {
         System.out.println("Люди, младше: " + age + ":");
 
         for (Node t : tree) {
-
-            if (t.p1.age <= age && !resultAge.contains(t.p1.fullName)) {
-                resultAge.add(t.p1.fullName);
+            Person curPers = t.GetPerson1();
+            int curAge =  curPers.getAge();
+            String curName = curPers.getFullName();
+            if (curAge <= age && !resultAge.contains(curName)) {
+                resultAge.add(curName);
             }
         }
         return resultAge;
