@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Person {
+public class Person  implements Serializable {
     private String fullName;
     ///private int age;
     //Вместо возраста создать поля даты рождения и смерти и высчитывать возраст в методе. 
@@ -37,6 +38,14 @@ public class Person {
         int t_age = lastYear - yearBirth;
         return t_age;
     }
+
+    @Override
+    public String toString() {
+        String res = "Имя: " + fullName + ",\t Пол: " + gender + ", Возраст: " + getAge();      
+
+        return res;
+    }
+
 
 
 } 

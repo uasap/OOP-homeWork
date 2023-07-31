@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class GeoTree {
+public class GeoTree implements  Serializable{
 
     private ArrayList<Node> tree = new ArrayList<>();
 
@@ -20,4 +21,18 @@ public class GeoTree {
         tree.add(new Node(husbent, Relationship.husbent, vife));
     }
 
+    public void saveObj(IO objIO,Serializable obj, String path) {
+        objIO.save(path, obj);
+    }
+
+    @Override
+    public String toString() {
+        String res = "";  
+        
+        for(Node node : tree){
+             res+= node.toString();
+             res+= "\n";
+        }
+        return res;
+    }
 }
