@@ -73,8 +73,8 @@ public class Main {
          IO serialize = new IO();
         
         gt.saveObj(serialize,gt,"person.out");         
-        gt = (GeoTree) serialize.load("person.out");        
-        System.out.println("After Restored: " + "\n" + gt + "\n");
+        GeoTree gtRestored = (GeoTree) serialize.load("person.out");        
+        System.out.println("After Restored: " + "\n" + gtRestored + "\n");
         
         
     }
