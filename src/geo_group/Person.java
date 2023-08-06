@@ -1,9 +1,9 @@
+package geo_group;
+
 import java.io.Serializable;
 
 public class Person  implements Serializable {
     private String fullName;
-    ///private int age;
-    //Вместо возраста создать поля даты рождения и смерти и высчитывать возраст в методе. 
     private int yearBirth;
     private int yearDie;
     
@@ -45,7 +45,4 @@ public class Person  implements Serializable {
 
         return res;
     }
-
-
-
 } 

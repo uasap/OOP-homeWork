@@ -1,3 +1,5 @@
+package geo_group;
+
 import java.io.Serializable;
 
 public class Node  implements Serializable{
@@ -24,7 +26,6 @@ public class Node  implements Serializable{
     public Relationship GetRelationship() {
         return re;
     }
-
 
     @Override
     public String toString() {

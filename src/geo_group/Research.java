@@ -1,3 +1,5 @@
+package geo_group;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 

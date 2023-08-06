@@ -1,7 +1,10 @@
+package geo_group;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class GeoTree implements  Serializable{
+public class GeoTree implements  Serializable, Iterable<Node>  {
 
     private ArrayList<Node> tree = new ArrayList<>();
 
@@ -35,4 +38,18 @@ public class GeoTree implements  Serializable{
         }
         return res;
     }
+
+    public void sortByName() {
+        tree.sort(new NodeComparatorByName());
+    }
+
+    public void sortByAge() {
+        tree.sort(new NodeComporatorByAge());
+    }
+
+    @Override
+    public Iterator<Node> iterator() {
+        return new NodeIterator(tree);
+    }    
+
 }

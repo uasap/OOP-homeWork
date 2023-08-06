@@ -1,8 +1,7 @@
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+
+package geo_group;
+
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
 /*Реализовать, с учетом ооп подхода, приложение.
 Для проведения исследований с генеалогическим древом.
@@ -19,10 +18,10 @@ public class Main {
     static Person jane ;
     static Person ivan ;
     static Person Sasha ;
-    static Person Sasha10;
-    static Person Sasha11 ;
-    static Person Sasha12 ;
-    static Person Sasha3 ;
+    static Person Kolya;
+    static Person andrey ;
+    static Person Dima ;
+    static Person Anton ;
 
     public static void defConfif(GeoTree gt) {
 
@@ -33,10 +32,10 @@ public class Main {
          jane = new Person(   "Женя",   2013, -1,Person.Gender.MALE);
          ivan = new Person(   "Ваня",   2011, -1,Person.Gender.MALE);
          Sasha = new Person(  "Саша",   2010, -1,Person.Gender.MALE);
-         Sasha10 = new Person("Коля",   2012, -1,Person.Gender.MALE);
-         Sasha11 = new Person("Дима",   2015, -1,Person.Gender.MALE);
-         Sasha12 = new Person("Андрей", 2016, -1,Person.Gender.MALE);
-         Sasha3 = new Person( "Костя",  2020, -1,Person.Gender.MALE);
+         Kolya = new Person("Коля",   2012, -1,Person.Gender.MALE);
+         andrey = new Person("Андрей",   2015, -1,Person.Gender.MALE);
+         Dima = new Person("Дима", 2016, -1,Person.Gender.MALE);
+         Anton = new Person( "Антон",  2020, -1,Person.Gender.MALE);
        
         gt.appendPerentChild(irina, vasya); // Ирина родитель Васи
         gt.appendPerentChild(irina, masha); // Ирина родитель Маши
@@ -46,9 +45,9 @@ public class Main {
         gt.appendPerentChild(igor, vasya); // Игорь родитель Васи
         gt.appendPerentChild(igor, masha); // Игорь родитель Маши
         gt.appendPerentChild(igor, Sasha); // Игорь родитель Саши
-        gt.appendPerentChild(igor, Sasha10); // Игорь родитель Саши
-        gt.appendPerentChild(igor, Sasha11); // Игорь родитель Саши
-        gt.appendPerentChild(igor, Sasha3); // Игорь родитель Саши 
+        gt.appendPerentChild(igor, Kolya); // Игорь родитель Коли
+        gt.appendPerentChild(igor, andrey); // Игорь родитель андрея
+        gt.appendPerentChild(igor, Anton); // Игорь родитель Антона 
 
     }
     public static void main(String[] args) throws IOException, ClassNotFoundException{
@@ -56,26 +55,29 @@ public class Main {
         GeoTree gt = new GeoTree();
         defConfif(gt);       
 
-         // Ищем детей Ирины
-         System.out.println("Дети Ирины");
-         System.out.println(new Research(gt).spend(irina, Relationship.parent));
-         // Ищем детей Игоря
-         System.out.println("Дети Игоря");
-         System.out.println(new Research(gt).spend(igor, Relationship.parent));
+        // Ищем детей Ирины
+        System.out.println("Дети Ирины");
+        System.out.println(new Research(gt).spend(irina, Relationship.parent));
+        // Ищем детей Игоря
+        System.out.println("Дети Игоря");
+        System.out.println(new Research(gt).spend(igor, Relationship.parent));
  
-         // Ищем мужа Ирины (Чья жена Ирина?)
-         System.out.println("Муж Ирины");
-         System.out.println(new Research(gt).spend(irina, Relationship.vife));
+        // Ищем мужа Ирины (Чья жена Ирина?)
+        System.out.println("Муж Ирины");
+        System.out.println(new Research(gt).spend(irina, Relationship.vife));
  
-         // Ищем людей определенного возраста
-         System.out.println(new Research(gt).searchAge());
+        // Ищем людей определенного возраста
+        System.out.println(new Research(gt).searchAge());
 
-         IO serialize = new IO();
+        IO serialize = new IO();
+
+        gt.sortByName();
+        gt.sortByAge();
         
         gt.saveObj(serialize,gt,"person.out");         
-        GeoTree gtRestored = (GeoTree) serialize.load("person.out");        
-        System.out.println("After Restored: " + "\n" + gtRestored + "\n");
-        
+        GeoTree gtRestored = (GeoTree) serialize.load("person.out");  
+
+        System.out.println("After Restored: " + "\n" + gtRestored + "\n");      
         
     }
 }
