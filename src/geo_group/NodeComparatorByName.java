@@ -3,9 +3,9 @@ package geo_group;
 
 import java.util.Comparator;
 
-public class NodeComparatorByName implements Comparator<Node> {
+public class NodeComparatorByName<T> implements Comparator<Node<T> > {
     @Override
-    public int compare(Node o1, Node o2) {
-        return o1.GetPerson1().getFullName().compareTo(o2.GetPerson1().getFullName());
+    public int compare(Node<T> o1, Node<T> o2) {
+        return ((Person) o1.GetPerson1()).getFullName().compareTo(((Person)o2.GetPerson1()).getFullName());
     }
 }

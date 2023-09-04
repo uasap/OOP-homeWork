@@ -5,12 +5,12 @@ package geo_group;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class NodeIterator implements Iterator<Node> {
+public class NodeIterator<T> implements Iterator<Node<T>> {
     private int index;
-    private ArrayList<Node> treeList;
+    private ArrayList<Node<T>> treeList;
 
-    public NodeIterator(ArrayList<Node> treeList) {
-        this.treeList = treeList;
+    public NodeIterator(ArrayList<Node<T>> tree) {
+        this.treeList = tree;
     }
 
     @Override
@@ -19,7 +19,7 @@ public class NodeIterator implements Iterator<Node> {
     }
 
     @Override
-    public Node next() {
+    public Node<T> next() {
         return treeList.get(index++);
     }
 }

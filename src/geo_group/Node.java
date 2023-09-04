@@ -2,24 +2,24 @@ package geo_group;
 
 import java.io.Serializable;
 
-public class Node  implements Serializable{
+public class Node<T>  implements Serializable{
 
-    private Person p1;
-    private Person p2;
+    private T p1;
+    private T p2;
     private Relationship re;
     
 
-    public Node(Person p1, Relationship re, Person p2) {
-        this.p1 = p1;
+    public Node(T parent, Relationship re, T children) {
+        this.p1 = parent;
         this.re = re;
-        this.p2 = p2;
+        this.p2 = children;
     }
 
-    public Person GetPerson1() {
+    public T GetPerson1() {
         return p1;
     }
 
-    public Person GetPerson2() {
+    public T GetPerson2() {
         return p2;
     }
 
@@ -30,6 +30,10 @@ public class Node  implements Serializable{
     @Override
     public String toString() {
         return String.format("<%s %s %s>", p1, re, p2);
+    }
+
+    public String getName() {
+        return ((Person) p1).getFullName();
     }
     
 }

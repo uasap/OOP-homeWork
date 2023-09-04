@@ -23,7 +23,7 @@ public class Main {
     static Person Dima ;
     static Person Anton ;
 
-    public static void defConfif(GeoTree gt) {
+    public static void defConfig(GeoTree<Person> gt) {
 
          irina = new Person(  "Ирина",  1967, -1, Person.Gender.FEMALE);
          igor = new Person(   "Игорь",  1960, -1,Person.Gender.MALE);
@@ -52,33 +52,43 @@ public class Main {
     }
     public static void main(String[] args) throws IOException, ClassNotFoundException{
 
-        GeoTree gt = new GeoTree();
-        defConfif(gt);       
+        boolean USE_MVP = true;
 
-        // Ищем детей Ирины
-        System.out.println("Дети Ирины");
-        System.out.println(new Research(gt).spend(irina, Relationship.parent));
-        // Ищем детей Игоря
-        System.out.println("Дети Игоря");
-        System.out.println(new Research(gt).spend(igor, Relationship.parent));
+        IO serialize = new IO();  
+           
+        if(!USE_MVP){
+           GeoTree<Person> gt = new GeoTree<Person>();
+           defConfig(gt);              
+
+           // Ищем детей Ирины
+           System.out.println("Дети Ирины");
+           System.out.println(new Research<Person>(gt).spend(irina, Relationship.parent));
+           // Ищем детей Игоря
+           System.out.println("Дети Игоря");
+           System.out.println(new Research<Person>(gt).spend(igor, Relationship.parent));
  
-        // Ищем мужа Ирины (Чья жена Ирина?)
-        System.out.println("Муж Ирины");
-        System.out.println(new Research(gt).spend(irina, Relationship.vife));
+           // Ищем мужа Ирины (Чья жена Ирина?)
+           System.out.println("Муж Ирины");
+           System.out.println(new Research<Person>(gt).spend(irina, Relationship.vife));
  
-        // Ищем людей определенного возраста
-        System.out.println(new Research(gt).searchAge());
+           // Ищем людей определенного возраста
+           System.out.println(new Research<Person>(gt).searchAge());       
 
-        IO serialize = new IO();
-
-        gt.sortByName();
-        gt.sortByAge();
+           gt.sortByName();
+           gt.sortByAge();
         
-        gt.saveObj(serialize,gt,"person.out");         
-        GeoTree gtRestored = (GeoTree) serialize.load("person.out");  
+           gt.saveObj(serialize,gt,"person.out");         
+           GeoTree<Person> gtRestored = (GeoTree<Person>) serialize.load("person.out");  
 
-        System.out.println("After Restored: " + "\n" + gtRestored + "\n");      
+           System.out.println("After Restored: " + "\n" + gtRestored + "\n");        
         
+        } else{
+           // MVP 
+           View view = new Console();        
+           GeoTree<Animal> gtAnimal = new GeoTree<Animal>();
+           new Presenter(view, gtAnimal, serialize);
+           view.start();
+        }        
     }
 }
     
