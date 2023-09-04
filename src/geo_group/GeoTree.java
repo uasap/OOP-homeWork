@@ -11,22 +11,6 @@ public class GeoTree<T /*extends Animal*/ > implements  Serializable, Iterable<N
     public ArrayList<Node<T>> getTree() {
         return tree;
     }
-
-    /*
-    public void addFamilyTree(T animal) {
-        Node<T> node = new Node(node, null, node);
-        if (!tree.contains(animal)) {
-            tree.add (Node<T> node);
-            if (animal.getMother() != null) {
-                animal.getMother().addChild(animal);
-            }
-            if (animal.getFather() != null) {
-                animal.getFather().addChild(animal);
-            }
-        }
-    }
-    */
-
     // связь родитель - ребенок
     public void appendPerentChild(T parent, T children) {
         tree.add(new Node<T>(parent, Relationship.parent, children));

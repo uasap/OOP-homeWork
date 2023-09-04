@@ -26,10 +26,7 @@ public class Console implements View {
             } else {
                 ///System.out.println("Введите число!");
                 go = false;
-            }
-            
-
-            
+            }           
         }
     }
 
